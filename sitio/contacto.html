@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-es="Contacto — MiPloy">Contact — MiPloy</title>
+  <meta name="description" content="Write to MiPloy if you want work or if you need a crew. info@miploy.com and (914) 444-2744." data-es="Escribe a MiPloy si buscas trabajo o si necesitas cuadrilla. info@miploy.com y (914) 444-2744.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido" data-es="Saltar al contenido">Skip to content</a>
+  <header class="cabecera">
+    <a class="logo" href="index.html"><img src="https://miploy.com/wp-content/uploads/2026/07/miployx900.png?v=1" alt="MiPloy"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-es="Menú">Menu</button>
+    <nav id="menu" aria-label="Main" data-es-aria="Principal">
+      <a href="index.html" data-es="Inicio">Home</a>
+      <a href="contratistas.html" data-es="Contratistas">Contractors</a>
+      <a href="trabajadores.html" data-es="Trabajadores">Workers</a>
+      <a href="como-funciona.html" data-es="Cómo funciona">How it works</a>
+      <a href="contacto.html" class="dudas" aria-current="page" data-es="¿Dudas?">Questions</a>
+      <div class="idiomas" role="group" aria-label="Language" data-es-aria="Idioma">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero hero-bajo" style="--foto: url('https://miploy.com/wp-content/uploads/2026/06/2190553294.jpg')">
+      <div class="envoltorio">
+        <p class="ceja" data-es="Contacto">Contact</p>
+        <h1 data-es="Si necesitas gente, empieza aquí.">If you need people, start here.</h1>
+        <p class="bajada" data-es="Publica el puesto o escribe. Respondemos en el día hábil. Quien busca trabajo también puede entrar, un paso más abajo.">Post the role or write to us. We reply the same business day. If you are looking for work, that path is one step down.</p>
+        <div class="grilla-2" style="margin-top: 28px;">
+          <a class="tarjeta tarjeta-principal" href="contratistas.html" style="text-decoration:none; color:inherit;">
+            <p class="etiqueta" data-es="Contratista">Contractor</p>
+            <h2 data-es="Necesito gente">I need people</h2>
+            <p data-es="Publicar un puesto, ver el mapa y pagar a la cuadrilla.">Post a role, see the map, and pay the crew.</p>
+          </a>
+          <a class="tarjeta" href="trabajadores.html" style="text-decoration:none; color:inherit;">
+            <p class="etiqueta" data-es="Trabajador">Worker</p>
+            <h2 data-es="Soy trabajador">I am a worker</h2>
+            <p data-es="Oficio, zona y cómo armar el perfil.">Trade, area, and how to build the profile.</p>
+          </a>
+        </div>
+        <div class="tiendas">
+          <a class="tienda" href="https://apps.apple.com/us/app/miploy/id6476468283" target="_blank" rel="noopener noreferrer"><small data-es="Bajar en">Download on</small><strong>App Store</strong></a>
+          <a class="tienda" href="https://play.google.com/store/apps/details?id=com.miploy.app" target="_blank" rel="noopener noreferrer"><small data-es="Disponible en">Get it on</small><strong>Google Play</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="envoltorio">
+        <div class="fila">
+          <div class="datos-contacto">
+            <h2 data-es="Habla con MiPloy">Talk to MiPloy</h2>
+            <p data-es="Lunes a viernes, de 8:00 a. m. a 5:00 p. m. La respuesta sale en ese día hábil.">Monday to Friday, 8:00 a.m. to 5:00 p.m. The reply goes out that business day.</p>
+            <p><span data-es="Correo:">Email:</span> <a href="mailto:info@miploy.com">info@miploy.com</a></p>
+            <p><span data-es="Teléfono:">Phone:</span> <a href="tel:+19144442744">(914) 444-2744</a></p>
+            <div class="redes">
+              <a href="https://www.instagram.com/miployapp" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.facebook.com/MiployOfficial" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+          </div>
+          <form id="contacto-form" class="formulario tarjeta" action="mailto:info@miploy.com" method="post" enctype="text/plain">
+            <h2 data-es="Enviar un mensaje">Send a message</h2>
+            <div class="campo">
+              <label for="nombre" data-es="Nombre">Name</label>
+              <input id="nombre" name="nombre" type="text" required autocomplete="name">
+            </div>
+            <div class="campo">
+              <label for="telefono" data-es="Teléfono">Phone</label>
+              <input id="telefono" name="telefono" type="tel" required autocomplete="tel">
+            </div>
+            <div class="dos-campos">
+              <div class="campo">
+                <label for="rol" data-es="Soy">I am</label>
+                <select id="rol" name="rol" required>
+                  <option value="" data-es="Elige">Choose</option>
+                  <option value="Worker" data-es="Trabajador">Worker</option>
+                  <option value="Contractor" data-es="Contratista">Contractor</option>
+                </select>
+              </div>
+              <div class="campo">
+                <label for="ciudad" data-es="Ciudad">City</label>
+                <input id="ciudad" name="ciudad" type="text" required placeholder="Queens">
+              </div>
+            </div>
+            <div class="campo">
+              <label for="oficio" data-es="Oficio o puesto">Trade or role</label>
+              <input id="oficio" name="oficio" type="text" required placeholder="Drywall">
+            </div>
+            <div class="campo">
+              <label for="mensaje" data-es="Mensaje">Message</label>
+              <textarea id="mensaje" name="mensaje" required placeholder="I need two drywall people in Queens this week." data-es-ph="Necesito dos de drywall en Queens esta semana."></textarea>
+            </div>
+            <button class="boton boton-azul" type="submit" data-es="Enviar">Send</button>
+            <p id="aviso-form" class="aviso-form" hidden></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-gris">
+      <div class="envoltorio">
+        <h2 data-es="Preguntas de la app">Questions about the app</h2>
+        <div style="margin-top: 12px;">
+          <details open>
+            <summary data-es="¿La app es gratis?">Is the app free?</summary>
+            <p data-es="Bajarla es gratis en App Store y en Google Play. Quien contrata paga una gestión del 15 % dentro de la app.">Downloading it is free on the App Store and Google Play. The person hiring pays a 15% fee inside the app.</p>
+          </details>
+          <details>
+            <summary data-es="¿En qué ciudades?">Which cities?</summary>
+            <p data-es="Nueva York, Nueva Jersey y Connecticut.">New York, New Jersey, and Connecticut.</p>
+          </details>
+          <details>
+            <summary data-es="¿Qué oficios?">Which trades?</summary>
+            <p data-es="Construcción, drywall, roofing, plomería, electricidad, pintura, carpintería y jardinería.">Construction, drywall, roofing, plumbing, electrical, painting, carpentry, and landscaping.</p>
+          </details>
+          <details>
+            <summary data-es="¿Cómo se paga?">How does pay work?</summary>
+            <p data-es="El contratista paga desde la app. El trabajador cobra en uno o dos días. Las horas salen del fichaje de entrada y salida.">The contractor pays from the app. The worker is paid in one or two days. The hours come from clock-in and clock-out.</p>
+          </details>
+          <details>
+            <summary data-es="¿En cuánto responden?">How fast do you reply?</summary>
+            <p data-es="En el día hábil, de lunes a viernes, entre 8:00 a. m. y 5:00 p. m.">The same business day, Monday to Friday, between 8:00 a.m. and 5:00 p.m.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltorio">
+      <div class="pie-grid">
+        <div>
+          <a class="logo-pie" href="index.html"><img src="https://miploy.com/wp-content/uploads/2026/07/miployx900.png?v=1" alt="MiPloy"></a>
+          <p data-es="Oficios y contratistas en Nueva York, Nueva Jersey y Connecticut.">Trades and contractors in New York, New Jersey, and Connecticut.</p>
+        </div>
+        <div>
+          <h2 data-es="Páginas">Pages</h2>
+          <a href="index.html" data-es="Inicio">Home</a>
+          <a href="contratistas.html" data-es="Contratistas">Contractors</a>
+          <a href="trabajadores.html" data-es="Trabajadores">Workers</a>
+          <a href="como-funciona.html" data-es="Cómo funciona">How it works</a>
+          <a href="contacto.html" data-es="Contacto">Contact</a>
+        </div>
+        <div>
+          <h2 data-es="La app">The app</h2>
+          <a href="https://apps.apple.com/us/app/miploy/id6476468283" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.miploy.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+          <a href="privacidad.html" data-es="Privacidad">Privacy</a>
+          <a href="terminos.html" data-es="Términos">Terms</a>
+          <a href="https://www.instagram.com/miployapp" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/MiployOfficial" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+      <p class="copy" data-es="2026 MiPloy. Todos los derechos reservados.">2026 MiPloy. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/sitio.js"></script>
+</body>
+</html>
