@@ -1,0 +1,84 @@
+name: Importar proyecto MiPloy desde ZIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'MiPloy*.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+
+      - name: Validar y extraer MiPloy
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+          import stat
+          from zipfile import ZipFile
+
+          root = Path.cwd()
+          archives = sorted(root.glob("MiPloy*.zip"), key=lambda p: p.stat().st_mtime, reverse=True)
+          if not archives:
+              raise SystemExit("No se encontró un ZIP MiPloy en la raíz del repositorio.")
+
+          archive = archives[0]
+          stage = root / ".miploy-import-stage"
+          stage.mkdir(exist_ok=True)
+
+          with ZipFile(archive) as zipped:
+              entries = [entry for entry in zipped.infolist() if not entry.is_dir()]
+              if not entries or len(entries) > 2000:
+                  raise SystemExit("ZIP vacío o con demasiados archivos.")
+              if sum(item.file_size for item in entries) > 150 * 1024 * 1024:
+                  raise SystemExit("El ZIP excede el límite de extracción de 150 MB.")
+
+              for item in entries:
+                  name = item.filename.replace("\\", "/")
+                  parts = Path(name).parts
+                  if (not parts or parts[0] != "MiPloy"
+                      or len(parts) < 2 or Path(name).is_absolute()
+                      or ".." in parts):
+                      raise SystemExit(f"Ruta no permitida: {name}")
+                  if stat.S_ISLNK((item.external_attr >> 16) & 0xFFFF):
+                      raise SystemExit(f"Enlace simbólico no permitido: {name}")
+                  rel = Path(*parts[1:])
+                  if rel.parts[0] == ".git" or rel.as_posix().startswith(".github/"):
+                      raise SystemExit(f"Ruta reservada: {rel}")
+                  if rel.as_posix().lower() == "readme.md":
+                      continue  # conservar el README mejorado del repositorio
+                  dest = stage / rel
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  with zipped.open(item) as src, dest.open("wb") as dst:
+                      shutil.copyfileobj(src, dst)
+
+          for src in stage.rglob("*"):
+              if src.is_file():
+                  target = root / src.relative_to(stage)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(src, target)
+
+          shutil.rmtree(stage)
+          archive.unlink()
+          print("Importación completada sin modificar el README principal.")
+          PY
+
+      - name: Confirmar y publicar archivos
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: importar archivos de MiPloy desde ZIP"
+            git push
+          fi
